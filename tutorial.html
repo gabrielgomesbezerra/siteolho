@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animatronic Eye // Tutorial DIY</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  <nav class="navbar navbar-expand-lg navbar-dark custom-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand logo" href="index.html">👁️ ANIMATRONIC <span>OS</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Alternar navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="menuPrincipal">
+        <ul class="navbar-nav gap-2">
+          <li class="nav-item"><a class="nav-link" href="index.html">Painel</a></li>
+          <li class="nav-item"><a class="nav-link" href="sobre.html">Hardware</a></li>
+          <li class="nav-item"><a class="nav-link active" href="tutorial.html">Tutorial</a></li>
+          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-4">
+    <div class="card custom-card p-4 p-md-5">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+        <div>
+          <h1 class="h3 fw-bold text-white mb-1">Como Fazer Seu Próprio Olho Animatrônico</h1>
+          <p class="text-secondary small mb-0">Guia completo de montagem mecânica, ligação elétrica e programação.</p>
+        </div>
+        <button class="btn btn-info fw-bold text-dark" onclick="baixarCodigoArduino()">⬇️ Baixar Código .INO</button>
+      </div>
+
+      <h2 class="h5 text-info mt-3">1. Lista de Materiais Necessários</h2>
+      <ul class="text-light lh-lg mb-4">
+        <li><strong>1x Placa Arduino:</strong> Pode ser Arduino Uno, Nano ou Mega.</li>
+        <li><strong>3x Micro Servos (SG90 ou MG90S):</strong> Um para esquerda/direita, um para cima/baixo e um para piscar a pálpebra.</li>
+        <li><strong>Estrutura do Olho:</strong> Peças impressas em 3D ou montadas com esfera de desodorante roll-on, madeira e arame rígido.</li>
+        <li><strong>Fios Jumpers e Fonte 5V:</strong> Para alimentar os motores com estabilidade sem reiniciar a placa.</li>
+      </ul>
+
+      <h2 class="h5 text-info">2. Esquema de Ligação dos Fios</h2>
+      <div class="alert alert-dark border-info-subtle my-3">
+        <p class="mb-2">🔌 <strong>Servo Horizontal (Esquerda/Direita):</strong> Fio de sinal no <strong>Pino 9</strong> do Arduino</p>
+        <p class="mb-2">🔌 <strong>Servo da Pálpebra (Piscar):</strong> Fio de sinal no <strong>Pino 10</strong> do Arduino</p>
+        <p class="mb-2">🔌 <strong>Servo Vertical (Cima/Baixo):</strong> Fio de sinal no <strong>Pino 11</strong> do Arduino</p>
+        <p class="mb-0">⚡ <strong>Alimentação:</strong> Todos os fios vermelhos no <strong>5V</strong> e todos os marrons/pretos no <strong>GND</strong>.</p>
+      </div>
+
+      <h2 class="h5 text-info mt-4">3. Passo a Passo da Montagem</h2>
+      <ol class="text-light lh-lg mb-4">
+        <li><strong>Centralize os motores antes de parafusar:</strong> Ligue os servos em <code>90°</code> antes de fixar os braços mecânicos.</li>
+        <li><strong>Monte as hastes de movimento:</strong> Conecte os arames finos entre os braços dos servos e os pinos do globo ocular.</li>
+        <li><strong>Grave o código na placa:</strong> Clique no botão <em>Baixar Código .INO</em> acima, carregue na Arduino IDE e feche o programa.</li>
+        <li><strong>Conecte no Painel:</strong> Volte na aba <strong>Painel</strong>, clique em <em>Conectar USB</em> e teste os movimentos!</li>
+      </ol>
+
+      <h2 class="h5 text-info mt-4">4. Vídeos de Referência na Prática</h2>
+      <p class="text-secondary">Demonstração passo a passo de como montar e movimentar olhos animatrônicos com Arduino:</p>
+      
+      <div class="ratio ratio-16x9 rounded-4 overflow-hidden border border-secondary-subtle my-3">
+        <iframe 
+          src="https://youtube.com" 
+          title="Olhos Robóticos Animatrônicos com Arduino" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="alert alert-dark border-secondary-subtle mt-3 mb-0">
+        <p class="fw-bold mb-2">📚 Outras referências úteis para sua montagem:</p>
+        <ul class="mb-0 small">
+          <li><a href="https://youtube.com" target="_blank" class="text-info text-decoration-none">↗️ Buscar vídeos de olho animatrônico com Arduino no YouTube</a></li>
+          <li><a href="https://youtube.com" target="_blank" class="text-info text-decoration-none">↗️ Montagem sem impressora 3D (esfera roll-on e materiais simples)</a></li>
+          <li><a href="https://youtube.com" target="_blank" class="text-info text-decoration-none">↗️ Montagem com peças 3D e clipes de papel</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-center py-4 text-secondary small mt-auto">
+    <p class="mb-0">Sistema de Controle Remoto // Projeto Olho Animatrônico 2026</p>
+  </footer>
+
+  <script src="https://jsdelivr.net" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  
+  <script>
+    function baixarCodigoArduino() {
+      const codigoIno = `#include <Servo.h>
+
+Servo servoX;        // Pino 9: Esquerda / Direita
+Servo servoPalpebra; // Pino 10: Piscar
+Servo servoY;        // Pino 11: Cima / Baixo
+
+void setup() {
+  Serial.begin(9600);
+  Serial.setTimeout(10);
+  
+  servoX.attach(9);
+  servoPalpebra.attach(10);
+  servoY.attach(11);
+  
+  servoX.write(90);
+  servoY.write(90);
+  servoPalpebra.write(0);
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    String dado = Serial.readStringUntil('\\n');
+    dado.trim();
+
+    if (dado == "P") {
+      servoPalpebra.write(90);
+      delay(250);
+      servoPalpebra.write(0);
+    } 
+    else {
+      int indiceVirgula = dado.indexOf(',');
+      if (indiceVirgula > 0) {
+        int anguloX = dado.substring(0, indiceVirgula).toInt();
+        int anguloY = dado.substring(indiceVirgula + 1).toInt();
+
+        if (anguloX >= 40 && anguloX <= 140) servoX.write(anguloX);
+        if (anguloY >= 50 && anguloY <= 130) servoY.write(anguloY);
+      }
+    }
+  }
+}`;
+      const blob = new Blob([codigoIno], { type: "text/plain;charset=utf-8" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "olho_animatronico.ino";
+      link.click();
+      URL.revokeObjectURL(link.href);
+    }
+  </script>
+</body>
+</html>

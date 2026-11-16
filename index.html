@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Animatronic Eye // Painel 2D</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  <!-- Navbar Responsiva -->
+  <nav class="navbar navbar-expand-lg navbar-dark custom-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand logo" href="index.html">👁️ ANIMATRONIC <span>OS</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Alternar navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="menuPrincipal">
+        <ul class="navbar-nav gap-2">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Painel</a></li>
+          <li class="nav-item"><a class="nav-link" href="sobre.html">Hardware</a></li>
+          <li class="nav-item"><a class="nav-link" href="tutorial.html">Tutorial</a></li>
+          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Conteúdo Principal -->
+  <main class="container my-4">
+    <div class="card custom-card p-4 p-md-5">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+        <div>
+          <h1 class="h3 fw-bold text-white mb-1">Controle 2D do Olho Mecânico</h1>
+          <p class="text-secondary small mb-0">Mova o mouse ou arraste o dedo para controlar o olho livremente.</p>
+        </div>
+        <div class="d-flex align-items-center gap-2" id="areaUsb">
+          <span id="status" class="badge rounded-pill bg-danger-subtle text-danger border border-danger-subtle px-3 py-2">● USB Desconectado</span>
+          <button id="btnConectar" class="btn btn-info fw-bold text-dark" onclick="conectarArduino()">🔌 Conectar USB</button>
+        </div>
+      </div>
+
+      <!-- VISOR DO OLHO DIGITAL 2D -->
+      <div id="areaRastreamento" class="visor-olho mb-4">
+        <div class="globo-ocular">
+          <div id="pupila" class="iris">
+            <div class="centro-pupila"></div>
+          </div>
+        </div>
+        <div class="telemetria">
+          <span>EIXO X: <strong id="textoX">90°</strong></span>
+          <span>EIXO Y: <strong id="textoY">90°</strong></span>
+          <span>REDE: <strong id="statusRede">MODO LIVRE</strong></span>
+        </div>
+      </div>
+
+      <!-- BOTÕES DE AÇÃO RÁPIDA -->
+      <div class="row g-2 mb-4">
+        <div class="col-6 col-md-4"><button class="btn btn-outline-light w-100 py-3 fw-semibold" onclick="moverManual(90, 55)">⬆️ Cima</button></div>
+        <div class="col-6 col-md-4"><button class="btn btn-outline-light w-100 py-3 fw-semibold" onclick="moverManual(90, 125)">⬇️ Baixo</button></div>
+        <div class="col-6 col-md-4"><button class="btn btn-outline-light w-100 py-3 fw-semibold" onclick="moverManual(45, 90)">⬅️ Esquerda</button></div>
+        <div class="col-6 col-md-4"><button class="btn btn-outline-light w-100 py-3 fw-semibold" onclick="moverManual(135, 90)">➡️ Direita</button></div>
+        <div class="col-6 col-md-4"><button class="btn btn-outline-light w-100 py-3 fw-semibold" onclick="moverManual(90, 90)">⏺️ Centro</button></div>
+        <div class="col-6 col-md-4"><button class="btn btn-info w-100 py-3 fw-bold text-dark" onclick="piscarOlho()">⚡ Piscar</button></div>
+      </div>
+
+      <!-- CAIXA DO LINK PARA CELULAR -->
+      <div class="caixa-pareamento p-3 p-md-4" id="caixaLink">
+        <p class="mb-2">📱 <strong>Controlar pelo celular:</strong> Copie o link abaixo e abra no Chrome do celular:</p>
+        <div class="input-group mx-auto" style="max-width: 520px;">
+          <input type="text" id="linkMagico" class="form-control text-center bg-dark text-white border-secondary" readonly>
+          <button class="btn btn-info fw-bold text-dark" onclick="copiarLink()">📋 Copiar Link</button>
+        </div>
+
+        <div id="avisoLocal" class="mt-3 pt-3 border-top border-secondary-subtle small text-secondary">
+          ⚠️ <strong>Importante:</strong> Para funcionar no celular, hospede a pasta no <a href="https://netlify.com" target="_blank" class="text-info fw-bold">Netlify Drop</a> ou GitHub Pages, abra o link online no PC e copie o endereço acima.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-center py-4 text-secondary small mt-auto">
+    <p class="mb-0">Sistema de Controle Remoto // Projeto Olho Animatrônico 2026</p>
+  </footer>
+
+  <script src="https://jsdelivr.net" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+  <script>
+    let porta = null;
+    let escritor = null;
+    let ultimoEnvio = 0;
+    let conexaoRemota = null;
+    const area = document.getElementById("areaRastreamento");
+
+    function atualizarVisualOlho(angX, angY) {
+      document.getElementById("textoX").innerText = angX + "°";
+      document.getElementById("textoY").innerText = angY + "°";
+      const deslX = ((angX - 90) / 45) * 45;
+      const deslY = ((angY - 90) / 35) * 22;
+      document.getElementById("pupila").style.transform = `translate(${deslX}px, ${deslY}px)`;
+    }
+
+    function animarPiscar() {
+      const globo = document.querySelector(".globo-ocular");
+      globo.classList.add("piscando");
+      setTimeout(() => globo.classList.remove("piscando"), 250);
+    }
+
+    function moverManual(angX, angY) {
+      atualizarVisualOlho(angX, angY);
+      enviarSeConectado(`${angX},${angY}`);
+    }
+
+    function piscarOlho() {
+      animarPiscar();
+      enviarSeConectado("P");
+    }
+
+    function calcularPosicao(clientX, clientY) {
+      const ret = area.getBoundingClientRect();
+      const porcX = Math.max(0, Math.min(1, (clientX - ret.left) / ret.width));
+      const porcY = Math.max(0, Math.min(1, (clientY - ret.top) / ret.height));
+
+      const anguloX = Math.round(45 + porcX * 90);
+      const anguloY = Math.round(55 + porcY * 70);
+
+      atualizarVisualOlho(anguloX, anguloY);
+
+      const agora = Date.now();
+      if (agora - ultimoEnvio > 45) {
+        enviarSeConectado(`${anguloX},${anguloY}`);
+        ultimoEnvio = agora;
+      }
+    }
+
+    area.addEventListener("mousemove", (e) => {
+      calcularPosicao(e.clientX, e.clientY);
+    });
+
+    area.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      if (e.touches && e.touches.length > 0) {
+        calcularPosicao(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: false });
+
+    area.addEventListener("touchmove", (e) => {
+      e.preventDefault();
+      if (e.touches && e.touches.length > 0) {
+        calcularPosicao(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: false });
+
+    async function enviarSeConectado(texto) {
+      if (escritor) {
+        try { await escritor.write(texto + "\n"); } catch (e) {}
+      }
+      if (conexaoRemota && conexaoRemota.open) {
+        try { conexaoRemota.send(texto); } catch (e) {}
+      }
+    }
+
+    async function conectarArduino() {
+      try {
+        porta = await navigator.serial.requestPort();
+        await porta.open({ baudRate: 9600 });
+
+        const encoder = new TextEncoderStream();
+        encoder.readable.pipeTo(porta.writable);
+        escritor = encoder.writable.getWriter();
+
+        const status = document.getElementById("status");
+        status.innerText = "● USB Conectado";
+        status.className = "badge rounded-pill bg-success-subtle text-success border border-success-subtle px-3 py-2";
+        document.getElementById("btnConectar").disabled = true;
+      } catch (erro) {
+        console.warn("Conexão USB cancelada ou não suportada:", erro);
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const campoLink = document.getElementById("linkMagico");
+      if (campoLink) {
+        campoLink.value = window.location.href;
+      }
+    });
+
+    function copiarLink() {
+      const campoLink = document.getElementById("linkMagico");
+      campoLink.select();
+      campoLink.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(campoLink.value).then(() => {
+        alert("Link copiado! Abra no navegador do celular.");
+      }).catch(() => {
+        document.execCommand("copy");
+        alert("Link copiado!");
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animatronic Eye // Hardware</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  <nav class="navbar navbar-expand-lg navbar-dark custom-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand logo" href="index.html">👁️ ANIMATRONIC <span>OS</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Alternar navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="menuPrincipal">
+        <ul class="navbar-nav gap-2">
+          <li class="nav-item"><a class="nav-link" href="index.html">Painel</a></li>
+          <li class="nav-item"><a class="nav-link active" href="sobre.html">Hardware</a></li>
+          <li class="nav-item"><a class="nav-link" href="tutorial.html">Tutorial</a></li>
+          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-4">
+    <div class="card custom-card p-4 p-md-5">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+        <div>
+          <h1 class="h3 fw-bold text-white mb-1">Arquitetura e Hardware</h1>
+          <p class="text-secondary small mb-0">Como a eletrônica, a mecânica e o navegador trabalham juntos.</p>
+        </div>
+        <span class="badge rounded-pill bg-info-subtle text-info border border-info-subtle px-3 py-2">⚙️ Especificações</span>
+      </div>
+
+      <section class="mb-4">
+        <h2 class="h5 fw-bold text-info mb-3">Como o Sistema Funciona</h2>
+        <p class="text-secondary">Este projeto combina mecânica articulada, microcontrolador Arduino e tecnologias modernas de navegador (<em>Web Serial API</em> e <em>WebRTC/PeerJS</em>) para mover um olho animatrônico em dois eixos e acionar sua pálpebra em tempo real.</p>
+      </section>
+
+      <section class="mt-2">
+        <h2 class="h5 fw-bold text-info mb-3">Componentes Principais</h2>
+        <div class="row g-3">
+          <div class="col-12 col-md-4">
+            <div class="p-3 bg-dark rounded border border-secondary-subtle h-100">
+              <h3 class="h6 fw-bold text-white mb-2">🧠 Microcontrolador</h3>
+              <p class="text-secondary small mb-0">Placa Arduino (Uno, Nano ou Mega) configurada a 9600 bps para receber coordenadas no formato <code>X,Y</code> e comandos de piscar (<code>P</code>).</p>
+            </div>
+          </div>
+          
+          <div class="col-12 col-md-4">
+            <div class="p-3 bg-dark rounded border border-secondary-subtle h-100">
+              <h3 class="h6 fw-bold text-white mb-2">⚙️ Atuadores</h3>
+              <p class="text-secondary small mb-0">3 Micro Servos (SG90 ou MG90S) responsáveis pelos movimentos horizontais (Pino 9), pálpebra (Pino 10) e verticais (Pino 11).</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <div class="p-3 bg-dark rounded border border-secondary-subtle h-100">
+              <h3 class="h6 fw-bold text-white mb-2">📱 Controle Multi-Dispositivo</h3>
+              <p class="text-secondary small mb-0">Comunicação direta via cabo USB no computador e pareamento remoto instantâneo para controle via toque na tela do celular.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="text-center py-4 text-secondary small mt-auto">
+    <p class="mb-0">Sistema de Controle Remoto // Projeto Olho Animatrônico 2026</p>
+  </footer>
+
+  <script src="https://jsdelivr.net" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

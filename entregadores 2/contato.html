@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animatronic Eye // Contato</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  <nav class="navbar navbar-expand-lg navbar-dark custom-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand logo" href="index.html">👁️ ANIMATRONIC <span>OS</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Alternar navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="menuPrincipal">
+        <ul class="navbar-nav gap-2">
+          <li class="nav-item"><a class="nav-link" href="index.html">Painel</a></li>
+          <li class="nav-item"><a class="nav-link" href="sobre.html">Hardware</a></li>
+          <li class="nav-item"><a class="nav-link" href="tutorial.html">Tutorial</a></li>
+          <li class="nav-item"><a class="nav-link active" href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-4">
+    <div class="card custom-card p-4 p-md-5">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+        <div>
+          <h1 class="h3 fw-bold text-white mb-1">Fale Conosco</h1>
+          <p class="text-secondary small mb-0">Tem dúvidas sobre a montagem ou quer compartilhar seu projeto?</p>
+        </div>
+        <span class="badge rounded-pill bg-info-subtle text-info border border-info-subtle px-3 py-2">✉️ Suporte</span>
+      </div>
+
+      <form onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso! Obrigado pelo contato.'); this.reset();">
+        <div class="mb-3">
+          <label for="nome" class="form-label fw-semibold">Seu Nome:</label>
+          <input type="text" class="form-control bg-dark border-secondary text-white" id="nome" placeholder="Digite seu nome" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label fw-semibold">Seu E-mail:</label>
+          <input type="email" class="form-control bg-dark border-secondary text-white" id="email" placeholder="seuemail@exemplo.com" required>
+        </div>
+
+        <div class="mb-4">
+          <label for="mensagem" class="form-label fw-semibold">Mensagem ou Dúvida:</label>
+          <textarea class="form-control bg-dark border-secondary text-white" id="mensagem" rows="5" placeholder="Conte como está a montagem do seu olho animatrônico..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-info w-100 py-3 fw-bold text-dark">Enviar Mensagem</button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="text-center py-4 text-secondary small mt-auto">
+    <p class="mb-0">Sistema de Controle Remoto // Projeto Olho Animatrônico 2026</p>
+  </footer>
+
+  <script src="https://jsdelivr.net" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
